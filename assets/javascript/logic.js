@@ -23,9 +23,10 @@ the_players = {
 
 var opponents_set = false;
 var opponent_selected = false;
+var player_wins = 0;
 
 function restart(){
-	alert("testing restart button");
+	location.reload();
 }
 
 function statistics(){
@@ -40,16 +41,41 @@ function player_validation(){
 	//This is if you kill the current enemy
 	if (enemy_health <= 0){
 		enemy_div.attr("data-player","dead");
+		player_wins++;
+		//If player has killed all opponents
+		if(player_wins === 3){
+			$(".content").empty();
+			$(".arena").empty();
+
+			game_over_label = $("<div>");
+			game_over_label.addClass("game_over_banner");
+			game_over_label.text("You Win!");
+			$(".arena").append(game_over_label);
+			$(".arena").toggleClass("visible");
+
+			//This will create a div to store the restart button inside of
+			restart_div = $("<div>");
+			restart_div.addClass("restart");
+
+			//This will create the restart button
+			restart_button = $("<button>");
+			restart_button.addClass ("restart_button");
+			restart_button.text("Restart");
+			restart_button.attr("onclick","restart()");
+
+			restart_div.append(restart_button);
+			$(".arena").append(restart_div);
+		}
 	}
 	//This is if the game has been lost
-	else if(user_health <= 0){
+	if(user_health <= 0){
 		$(".content").empty();
 		$(".arena").empty();
 
 		//This will create a game over label that displays when the game is lost
 		game_over_label = $("<div>");
 		game_over_label.addClass("game_over_banner");
-		game_over_label.text("Game Over");
+		game_over_label.text("You Lost");
 		$(".arena").append(game_over_label);
 		$(".arena").toggleClass("visible");
 
@@ -66,6 +92,7 @@ function player_validation(){
 		restart_div.append(restart_button);
 		$(".arena").append(restart_div);
 	}
+
 }
 
 //This finds the id of the user and the enemy

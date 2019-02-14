@@ -1,0 +1,223 @@
+* {
+  box-sizing: border-box;
+}
+
+body{
+	margin: 0;
+	height: 100vh;
+	display: grid;
+	padding: 0px;
+	grid-template-rows: [banner] 80px [body] auto [arena] 40%;
+}
+
+.banner{
+	background-color: black;
+
+}
+
+.header{
+	color: white;
+	text-align: center;
+	grid-row-start: banner;
+	font-size: 48px;
+}
+
+.content{
+	grid-row-start: body;
+	display: grid;
+	grid-template-columns: [game] 70% [stats] 30%;
+	background-image: url("../images/hangar.jpg");
+	background-size: contain;
+	background-size: 100% 100%;
+}
+
+.game{
+	grid-column-start: game;
+	display: grid;
+	grid-template-rows: [game_top_label] 8% [game_top] 42% [game_bottom_label] 8% [game_bottom] 42%;
+	padding: 20px;
+}
+
+.label{
+	color: white;
+	font-size: 25px;
+	margin: 0px 20px;
+}
+
+.label_on{
+	background-color: black;
+}
+
+.game_top_row_label{
+	grid-row-start: game_top_label;
+}
+
+.game_top_row{
+	display: flex;
+	flex-direction: row;
+	grid-row-start: game_top;
+}
+
+.game_bottom_row{
+	display: flex;
+	flex-direction: row;
+	grid-row-start: game_bottom;
+}
+
+
+.stats{
+	grid-column-start: stats;
+}
+
+.arena{
+	display: grid;
+	grid-row-start: arena;
+	transition: background-image 2s ease-in-out;
+	background-image: url("../images/galaxy2.jpg");
+	background-size: contain;
+	background-size: 100% 100%;
+	grid-template-rows: [arena_top] 20% [arena_middle] auto [arena_bottom] 20%;
+	grid-template-columns: 
+}
+
+.arena_top{
+	grid-row-start: arena_top;
+}
+
+.arena_content{
+	grid-row-start: arena_middle;
+	display: grid;
+	grid-template-columns: [arena_user] 40% [arena_center] auto [arena_opponent] 40%;
+}
+
+.arena_bottom{
+	grid-row-start: arena_bottom;
+}
+
+.arena_user{
+	display: flex;
+	justify-content: center;
+}
+
+.arena_opponent{
+	display: flex;
+	justify-content: center;
+}
+
+.arena_center{
+	grid-column-start: arena_center;
+	display: flex;
+	justify-content: center;
+}
+
+.fight_button{
+	display: none;
+}
+
+.button_visible{
+	background-color: #4CAF50; /* Green */
+	height: 80px;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	transition-duration: 0.4s;
+}
+
+.button_visible:hover{
+	background-color: #f44336;
+	color: white;
+}
+
+.visible{
+	transition: background-image 2s ease-in-out;
+	background-image: url("../images/arena.jpg");
+	background-size: contain;
+	background-size: 100% 100%;
+}
+
+.player{
+	display: grid;
+	background-color: white;
+	width: 12%;
+	height: 100%;
+	display: grid;
+	grid-template-rows: [name] 30px [image] auto [hp] 30px;
+	border: 8px solid green;
+	margin: 0px 20px;
+	text-align: center;
+}	
+
+.in_arena{
+	width: 30%;
+}
+
+.player_name{
+	grid-row-start: name;
+}
+
+.player_image{
+	grid-row-start: image;
+}
+
+.hp{
+	grid-row-start: hp;
+}
+
+#obi_wan_image{
+	background-image: url("../images/obi_wan.jpg");
+	background-size: contain;
+	background-size: 100% 100%;
+}
+
+#luke_image{
+	background-image: url("../images/luke.jpg");
+	background-size: contain;
+	background-size: 100% 100%;
+}
+
+#vader_image{
+	background-image: url("../images/vader.jpg");
+	background-size: contain;
+	background-size: 100% 100%;
+}
+
+#maul_image{
+	background-image: url("../images/maul.jpg");
+	background-size: contain;
+	background-size: 100% 100%;
+}
+
+[data-player="opponent"]{
+	border: 8px solid red;
+}
+
+[data-player="opponent_in_arena"]{
+	border: 8px solid red;
+}
+
+[data-player="dead"]{
+	display: none;
+}
+
+.game_over_banner{
+	color: white;
+	font-size: 100px;
+	text-align: center;
+}
+
+.restart{
+	display: flex;
+	justify-content: center;
+}
+
+.restart_button{
+	align-self: flex-end;
+	height: 80px;
+	width: 140px;
+	font-size: 30px;
+	text-align: center;
+}
